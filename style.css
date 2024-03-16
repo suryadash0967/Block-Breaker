@@ -19,43 +19,35 @@ body {
 }
 
 .box {
-    background-color: rgb(224, 30, 30);
-    border: 1px solid rgb(0, 0, 0);
-    height: 2rem;
-    width: 2rem;
+    background-color: rgb(5, 155, 255);
+    border: none;
+    height: 1.5rem;
+    width: 4.5rem;
 }
 
 .container {
     height: 100%;
     padding: 1rem 0;
-    display: flex;
-    justify-content: start;
-    /* align-items: center; */
-    flex-direction: column;
 }
 
-.big-box {
-    display: flex;
-    /* flex-wrap: wrap; */
-}
 
 .bar {
     position: absolute;
     bottom: 10px;
     left: 41%;
-    width: 15rem;
-    height: 2rem;
-    background-color: rgb(255, 255, 255);
+    width: 10rem;
+    height: 1rem;
+    background-color: rgb(0, 255, 115);
 }
 
 .ball {
     position: absolute;
-    bottom: 7%;
-    left: 48.5%;
-    height: 1.8rem;
-    width: 1.8rem;
+    bottom: 4.43%;
+    left: 46.2%;
+    height: 1.3rem;
+    width: 1.3rem;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: #f31747;
 }
 
 .moving-compos {

@@ -2,19 +2,52 @@ let bar = document.querySelector(".bar");
 let ball = document.querySelector(".ball");
 let boxes = document.querySelectorAll(".box");
 
+let count=0, blockX=0, blockY=10;
+
+
+boxes.forEach((box)=>{
+    if(count%17==0){
+        blockX=0;
+        blockY += 34;
+    }
+    box.style.position="absolute";
+    box.style.left = `${blockX}px`;
+    box.style.top = `${blockY}px`;
+    blockX += 80;
+    count++;
+
+})
+
+
+
+
 let barPosition = bar.getBoundingClientRect().left;
 let gameStarted = false;
 
 let h2Begin = document.createElement("h2");
+let h2End = document.createElement("h2");
 h2Begin.innerText = "Press 'Enter' to start";
 
 let body = document.querySelector("body");
+
+h2End.innerText = "";
+body.appendChild(h2End);
+h2End.style.zIndex = "100";
+h2End.style.fontWeight = "400";
+h2End.style.position = "absolute";
+h2End.style.top = "50%";
+h2End.style.left = "41.5%";
+h2End.style.color = "#fff";
+
+
 body.appendChild(h2Begin);
 h2Begin.style.zIndex = "100";
+h2Begin.style.fontWeight = "400";
 h2Begin.style.position = "absolute";
 h2Begin.style.top = "50%";
-h2Begin.style.left = "40.5%";
+h2Begin.style.left = "38.5%";
 h2Begin.style.color = "#fff";
+
 
 let ballAnim0X=0;
 let ballAnim0Y=0;
@@ -44,14 +77,9 @@ document.addEventListener("keyup", (event) => {
     }
 })
 
-if (gameStarted) {
-
-}
-
 
 
 bar.addEventListener("mousedown", mouseDownHandler);
-
 
 function mouseDownHandler(e) {
     offsetX = e.clientX - bar.getBoundingClientRect().left;
@@ -67,7 +95,7 @@ function mouseUpHandler(e) {
 }
 
 function mouseMoveHandler(e) {
-    if(e.clientX-offsetX > "1120" || e.clientX-offsetX < "10") return;
+    if(e.clientX-offsetX > "1200" || e.clientX-offsetX < "6") return;
     bar.style.left = `${e.clientX - offsetX}px`;
 }
 
@@ -86,10 +114,13 @@ const pos45 = (ballAnim1X,ballAnim1Y) => {
     let ballRect = ball.getBoundingClientRect();
     let barRect = bar.getBoundingClientRect();
 
-    if(ballRect.right >= 1340) { 
+    if(ballRect.right >= 1360) { 
         pos135(ballAnim1X,ballAnim1Y)
     }
-    if(ballRect.bottom > 565) {
+    if(ballRect.bottom > 590) {
+        neg45(ballAnim1X,ballAnim1Y)
+    }
+    if(ballRect.top < 5) {
         neg45(ballAnim1X,ballAnim1Y)
     }
 
@@ -98,30 +129,27 @@ const pos45 = (ballAnim1X,ballAnim1Y) => {
         pos45(ballAnim1X,ballAnim1Y);
     }
 
-
-
-
-
-
+    
     boxes.forEach((box)=>{
-    let boxRect = box.getBoundingClientRect();
-        if (
-            ballRect.right >= boxRect.left &&
-            ballRect.left <= boxRect.right &&
-            ballRect.bottom >= boxRect.top &&
-            ballRect.top <= boxRect.bottom
-            
-        ) {
-            box.remove();
-            neg45(ballAnim1X,ballAnim1Y)
-        }
-    })
-},7)
+        let boxRect = box.getBoundingClientRect();
+            if (
+                ballRect.right >= boxRect.left &&
+                ballRect.left <= boxRect.right &&
+                ballRect.bottom >= boxRect.top &&
+                ballRect.top <= boxRect.bottom
+                
+            ) {
+                box.remove();
+                if (boxRect.top < ballRect.top) {neg45(ballAnim1X,ballAnim1Y)}
+                
+                else {pos135(ballAnim1X,ballAnim1Y)}
+
+            }
+        })
+    },1)
     
 }
 
-
-let p=0;
 
 
 
@@ -137,12 +165,12 @@ const neg45 = (ballAnim2X,ballAnim2Y) => {
     let barRect = bar.getBoundingClientRect();
 
 
-    if(ballRect.right >= 1330) {
+    if(ballRect.right >= 1360) {
         neg135(ballAnim2X,ballAnim2Y);
     }
-    if(ballRect.bottom >= 585) {
+    if(ballRect.bottom >= 598) {
         clearInterval(intervalId);
-        h2Begin.innerText="Game Over";
+        h2End.innerText="Game Over!";
     }
     
     if((Math.floor(ballRect.bottom) == Math.floor(barRect.top)) && (ballRect.right > barRect.left) && (ballRect.left < barRect.right)) {
@@ -153,17 +181,18 @@ const neg45 = (ballAnim2X,ballAnim2Y) => {
     boxes.forEach((box)=>{
         let boxRect = box.getBoundingClientRect();            
             if(
-                ballRect.right >= boxRect.left &&
-                ballRect.left <= boxRect.right &&
+                ballRect.right > boxRect.left &&
+                ballRect.left < boxRect.right &&
                 ballRect.bottom >= boxRect.top &&
                 ballRect.top <= boxRect.bottom
-            
         ) {
             box.remove();
-            neg135(ballAnim2X,ballAnim2Y)
+            if ((boxRect.top > ballRect.top)) {pos45(ballAnim2X,ballAnim2Y)}
+                
+            else  {neg135(ballAnim2X,ballAnim2Y)}
         }
     })
-},7)
+},1)
 }
 
 
@@ -185,9 +214,10 @@ const neg135 = (ballAnim3X,ballAnim3Y) => {
     let ballRect = ball.getBoundingClientRect();
     let barRect = bar.getBoundingClientRect();
 
-    if(ballRect.bottom >= 585) {
+    if(ballRect.bottom >= 598) {
         clearInterval(intervalId);
-        h2Begin.innerText="Game Over"
+        h2End.innerText="Game Over!"
+        // h2Begin.style.left = "44%";
     }
     if(ballRect.left < 10) {
         neg45(ballAnim3X,ballAnim3Y)
@@ -208,11 +238,13 @@ const neg135 = (ballAnim3X,ballAnim3Y) => {
             
         ) {
             box.remove();
-            pos135(ballAnim3X,ballAnim3Y)
+            if ((boxRect.right < ballRect.right)) {neg45(ballAnim3X,ballAnim3Y)}
+                
+            else  {pos135(ballAnim3X,ballAnim3Y)}
 
         }
     })
-},7)
+},1)
 }
 
 
@@ -240,6 +272,9 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
     if(ballRect.top < 10) {
         neg135(ballAnim4X,ballAnim4Y)
     }
+    if(ballRect.top < 5) {
+        neg135(ballAnim4X,ballAnim4Y)
+    }
 
 
 
@@ -252,10 +287,12 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
             ballRect.top <= boxRect.bottom
         ) {
             box.remove();
-            neg135(ballAnim4X,ballAnim4Y)
+            if ((boxRect.right < ballRect.right)) {pos45(ballAnim4X,ballAnim4Y)}
+                
+            else {neg135(ballAnim4X,ballAnim4Y)}
         }
     })
-},7)
+},1)
 }
 
 function gamePlay(){
@@ -282,7 +319,6 @@ function gamePlay(){
                                             //extreme right of UI window - 1112px                                           
                                             //extreme bottom of UI window - 599px
 // ---------------------------------------------------------------------------------------------------------------------------//
-
 
 
 
