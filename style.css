@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+}
+
+.section{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+}
+
+.box{
+    background-color: rgb(224, 30, 30);
+    border: 1px solid rgb(0, 0, 0);
+    height: 2rem;
+    width: 2rem;
+}
+
+.container{
+    height: 100%;
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.big-box{
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.bar{
+    position: absolute;
+    bottom: 10px;
+    left: 41%;
+    width: 15rem;
+    height: 2rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.ball{
+    position: absolute;
+    bottom: 7%;
+    left: 48.5%;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.moving-compos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.move-pos45{
+    animation-name: pos45;
+    animation-duration: 80s;
+    animation-timing-function: linear;
+    animation-direction: forwards;
+
+}
+@keyframes pos45 {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(10000px, -10000px);
+    }
+}
+
+
+.move-neg45{
+    animation-name: neg45;
+    animation-duration: 80s;
+    animation-timing-function: linear;
+    animation-direction: forwards;
+
+
+}
+@keyframes neg45 {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(10000px, 10000px);
+    }
+}
+
+
+.move-pos135{
+    animation-name: pos135;
+    animation-duration: 80s;
+    animation-timing-function: linear;
+    animation-direction: forwards;
+
+
+}
+@keyframes pos135 {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(-10000px, -10000px);
+    }
+}
+
+
+.move-neg135{
+    animation-name: neg135;
+    animation-duration: 80s;
+    animation-timing-function: linear;
+    animation-direction: forwards;
+
+
+}
+@keyframes neg135 {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(-10000px, 10000px);
+    }
+}
+
