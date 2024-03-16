@@ -64,10 +64,10 @@ document.addEventListener("keyup", (event)=>{
 })
 document.addEventListener("click", (event)=>{
 
-        gameStarted=true;
+        if(!gameStarted) { gameStarted=true;
         h2Begin.innerText="";
         gamePlay();
-
+        }
 
 })
 
@@ -304,7 +304,7 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
 }
 
 function gamePlay(){
-
+    // gameStarted=false;
     if (Math.floor(Math.random()*2) + 1 === 1) {
         ballAnim0X=0;
         ballAnim0Y=0;
