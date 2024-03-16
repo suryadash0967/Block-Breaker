@@ -71,6 +71,7 @@ document.addEventListener("keyup", (event)=>{
     if(event.key==="Enter" && !gameStarted) {
         gameStarted=true;
         h2Begin.innerText="";
+        para.innerText="";
         gamePlay();
 
     };  
@@ -79,6 +80,7 @@ document.addEventListener("click", (event)=>{
 
         if(!gameStarted) { gameStarted=true;
         h2Begin.innerText="";
+        para.innerText="";
         gamePlay();
         }
 
