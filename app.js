@@ -26,7 +26,9 @@ let gameStarted = false;
 
 let h2Begin = document.createElement("h2");
 let h2End = document.createElement("h2");
-h2Begin.innerText = "Press 'Enter' to start";
+let para = document.createElement("p");
+
+h2Begin.innerText = "Press 'Enter' or 'Click' anywhere to start";
 
 let body = document.querySelector("body");
 
@@ -44,9 +46,20 @@ body.appendChild(h2Begin);
 h2Begin.style.zIndex = "100";
 h2Begin.style.fontWeight = "400";
 h2Begin.style.position = "absolute";
-h2Begin.style.top = "50%";
-h2Begin.style.left = "38.5%";
+h2Begin.style.top = "40%";
+h2Begin.style.left = "31.5%";
 h2Begin.style.color = "#fff";
+
+
+para.innerHTML = "<p><b>Instructions:</b></br> 1. Hold The Bar And Move The Mouse To Move </br> 2. Do Not Leave The MouseClick Once The Game Has Started   </br>   3. Refresh To Play Again   </br>  4. Do Not Play This On A Phone  </p>";
+body.appendChild(para);
+para.style.zIndex = "100";
+para.style.textAlign = "start";
+para.style.fontWeight = "400";
+para.style.position = "absolute";
+para.style.top = "50%";
+para.style.left = "31.5%";
+para.style.color = "#fff";
 
 
 let ballAnim0X=0;
