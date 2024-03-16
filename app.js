@@ -62,6 +62,14 @@ document.addEventListener("keyup", (event)=>{
 
     };  
 })
+document.addEventListener("click", (event)=>{
+
+        gameStarted=true;
+        h2Begin.innerText="";
+        gamePlay();
+
+
+})
 
 document.addEventListener("keyup", (event) => {
     if (gameStarted) {
