@@ -51,7 +51,7 @@ h2Begin.style.left = "31.5%";
 h2Begin.style.color = "#fff";
 
 
-para.innerHTML = "<p><b>Instructions:</b></br> 1. Hold The Bar And Move The Mouse To Move </br> 2. Refresh To Play Again   </br>  3. Do Not Play This On A Phone  </p>";
+para.innerHTML = "<p><b>Instructions:</b></br> 1. Click The Bar And Move The Mouse To Move </br> 2. Refresh To Play Again   </br>  3. Do Not Play This On A Phone  </p>";
 body.appendChild(para);
 para.style.zIndex = "100";
 para.style.textAlign = "start";
