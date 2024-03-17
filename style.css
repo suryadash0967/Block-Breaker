@@ -33,7 +33,7 @@ body {
 
 .bar {
     position: absolute;
-    bottom: 1.8rem;
+    bottom: 10.8rem;
     left: 41%;
     width: 10rem;
     height: 1rem;
@@ -42,7 +42,7 @@ body {
 
 .ball {
     position: absolute;
-    bottom: 2.9rem;
+    bottom: 11.9rem;
     left: 46.2%;
     height: 1.3rem;
     width: 1.3rem;
