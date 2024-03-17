@@ -114,7 +114,7 @@ function mouseDownHandler(e) {
 }
 function mouseUpHandler(e) {
     window.removeEventListener("mouseup", mouseUpHandler);
-    window.removeEventListener("mousemove", mouseMoveHandler);
+    // window.removeEventListener("mousemove", mouseMoveHandler);
 }
 
 function mouseMoveHandler(e) {
