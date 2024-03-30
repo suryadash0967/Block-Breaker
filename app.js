@@ -310,9 +310,9 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
             ballRect.top <= boxRect.bottom
         ) {
             box.remove();
-            if ((boxRect.right < ballRect.right)) {pos45(ballAnim4X,ballAnim4Y)}
+            if ((boxRect.right < ballRect.right) && (boxRect.right <= ballRect.left)) {pos45(ballAnim4X,ballAnim4Y)}
                 
-            else {neg135(ballAnim4X,ballAnim4Y)}
+            if ((boxRect.bottom < ballRect.bottom) && (boxRect.bottom >= ballRect.top)) {neg135(ballAnim4X,ballAnim4Y)}
         }
     })
 },1)
