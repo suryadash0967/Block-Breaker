@@ -114,7 +114,6 @@ function mouseDownHandler(e) {
 }
 function mouseUpHandler(e) {
     window.removeEventListener("mouseup", mouseUpHandler);
-    // window.removeEventListener("mousemove", mouseMoveHandler);
 }
 
 function mouseMoveHandler(e) {
@@ -135,7 +134,6 @@ const pos45 = (ballAnim1X,ballAnim1Y) => {
     ballAnim1Y--;
 
     let ballRect = ball.getBoundingClientRect();
-    let barRect = bar.getBoundingClientRect();
 
     if(ballRect.right >= 1360) { 
         pos135(ballAnim1X,ballAnim1Y)
@@ -147,10 +145,6 @@ const pos45 = (ballAnim1X,ballAnim1Y) => {
         neg45(ballAnim1X,ballAnim1Y)
     }
 
-
-    if((Math.floor(ballRect.bottom) == Math.floor(barRect.top)) && (ballRect.right > barRect.left) && (ballRect.left < barRect.right)) {
-        pos45(ballAnim1X,ballAnim1Y);
-    }
 
     
     boxes.forEach((box)=>{
@@ -240,7 +234,6 @@ const neg135 = (ballAnim3X,ballAnim3Y) => {
     if(ballRect.bottom >= 598) {
         clearInterval(intervalId);
         h2End.innerText="Game Over!"
-        // h2Begin.style.left = "44%";
     }
     if(ballRect.left < 10) {
         neg45(ballAnim3X,ballAnim3Y)
@@ -287,7 +280,6 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
     ballAnim4Y--;
 
     let ballRect = ball.getBoundingClientRect();
-    let barRect = bar.getBoundingClientRect();
 
     if(ballRect.left <= 10) {
         pos45(ballAnim4X,ballAnim4Y)
@@ -319,7 +311,6 @@ const pos135 = (ballAnim4X,ballAnim4Y) => {
 }
 
 function gamePlay(){
-    // gameStarted=false;
     if (Math.floor(Math.random()*2) + 1 === 1) {
         ballAnim0X=0;
         ballAnim0Y=0;
